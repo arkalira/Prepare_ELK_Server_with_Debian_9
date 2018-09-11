@@ -195,7 +195,7 @@ Hacemos que mande todo a logstash
 # type => "rsyslog" is an optional identifier to help identify messaging streams in the pipeline.
 input {
   udp {
-    host => "172.29.248.241"
+    host => "XXXXXXXX"
     port => 10514
     codec => "json"
     type => "rsyslog"
@@ -209,7 +209,7 @@ filter { }
 output {
   if [type] == "rsyslog" {
     elasticsearch {
-      hosts => [ "172.29.248.241:9200" ]
+      hosts => [ "XXXXXXXX:9200" ]
     }
   }
 }
@@ -219,7 +219,7 @@ Test si todo está escuchando
 ```
 ss -putan | grep 514     
 udp    UNCONN     0      0         *:514                   *:*                   users:(("rsyslogd",pid=26165,fd=6))
-udp    UNCONN     0      0      172.29.248.241:10514                 *:*                   users:(("java",pid=25910,fd=85))
+udp    UNCONN     0      0      XXXXXXXX:10514                 *:*                   users:(("java",pid=25910,fd=85))
 udp    UNCONN     0      0        :::514                  :::*                   users:(("rsyslogd",pid=26165,fd=7))
 ```
 
